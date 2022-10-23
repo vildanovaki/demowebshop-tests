@@ -8,4 +8,6 @@ public interface AppConfig extends Config{
 
     String login();
     String password();
+    String loginAutoCloud();
+    String passwordAutoCloud();
 }

@@ -19,10 +19,17 @@ public class TestBase {
 
     @BeforeAll
     static void configureBaseUrl() {
+        SelenideLogger.addListener("AllureListener", new AllureSelenide());
+
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("version", "100.0");
+        Configuration.browserSize = System.getProperty("size", "1366x768");
+
         Configuration.baseUrl = "https://demowebshop.tricentis.com";
         RestAssured.baseURI = "https://demowebshop.tricentis.com";
 
-        SelenideLogger.addListener("AllureListener", new AllureSelenide());
+        String remoteUrl = System.getProperty("remoteUrl", "selenoid.autotests.cloud");
+        Configuration.remote = format("https://%s:%s@%s/wd/hub/", credentials.loginAutoCloud(), credentials.passwordAutoCloud(), remoteUrl);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
