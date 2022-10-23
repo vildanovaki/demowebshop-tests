@@ -1,6 +1,7 @@
 package com.vildanova.tests;
 
 import com.vildanova.pages.*;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 
 public class DemoWebShopTests extends TestBase {
@@ -12,6 +13,7 @@ public class DemoWebShopTests extends TestBase {
     AddProductToCardAndCheck addProductToCardAndCheck = new AddProductToCardAndCheck();
 
     @Test
+    @Feature("Проверка добавления товара в корзину")
     void addToCardTest() {
         loginAsnPasswordPage.getInformationAboutLoginAndPassword();
 

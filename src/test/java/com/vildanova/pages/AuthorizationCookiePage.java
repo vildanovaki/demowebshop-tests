@@ -5,6 +5,7 @@ import io.qameta.allure.restassured.AllureRestAssured;
 import org.openqa.selenium.Cookie;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.vildanova.filters.CustomLogFilter.customLogFilter;
 import static com.vildanova.pages.LoginAsnPasswordPage.login;
 import static com.vildanova.pages.LoginAsnPasswordPage.password;
 import static io.restassured.RestAssured.given;
@@ -18,7 +19,7 @@ public class AuthorizationCookiePage {
     public AuthorizationCookiePage getAuthorizationCookie(){
         authorizationCookie =
                 given()
-                        .filter(new AllureRestAssured())
+                        .filter(customLogFilter().withCustomTemplates())
                         .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                         .body("Email="+login+"&Password="+password+"&RememberMe=false")
                         .when()

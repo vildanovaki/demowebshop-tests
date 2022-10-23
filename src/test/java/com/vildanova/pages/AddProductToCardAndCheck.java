@@ -3,6 +3,8 @@ package com.vildanova.pages;
 import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
+
+import static com.vildanova.filters.CustomLogFilter.customLogFilter;
 import static com.vildanova.pages.AuthorizationCookiePage.cookie;
 import static com.vildanova.pages.CountProductsPage.parse;
 import static io.restassured.RestAssured.given;
@@ -14,7 +16,7 @@ public class AddProductToCardAndCheck {
     public void addOneProductToCardAndCheck(){
         Response response =
                 given()
-                        .filter(new AllureRestAssured())
+                        .filter(customLogFilter().withCustomTemplates())
                         .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                         .body("addtocart_31.EnteredQuantity=1")
                         .cookie(String.valueOf(cookie))
