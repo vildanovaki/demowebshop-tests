@@ -8,7 +8,7 @@ public class CountProductsPage {
 
     String countOfProducts;
     int length;
-    static int parse;
+    public static int parse;
 
     @Step("Узнать количество товаров в корзине")
     public void getCountOfProductsInBasket(){

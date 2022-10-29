@@ -7,6 +7,8 @@ import io.restassured.response.Response;
 import static com.vildanova.filters.CustomLogFilter.customLogFilter;
 import static com.vildanova.pages.AuthorizationCookiePage.cookie;
 import static com.vildanova.pages.CountProductsPage.parse;
+import static com.vildanova.tests.Specs.requestAddProductToCardAndCheck;
+import static com.vildanova.tests.Specs.requestAuthorizationCookie;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
@@ -16,18 +18,16 @@ public class AddProductToCardAndCheck {
     public void addOneProductToCardAndCheck(){
         Response response =
                 given()
-                        .filter(customLogFilter().withCustomTemplates())
-                        .contentType("application/x-www-form-urlencoded; charset=UTF-8")
-                        .body("addtocart_31.EnteredQuantity=1")
-                        .cookie(String.valueOf(cookie))
+                        .spec(requestAddProductToCardAndCheck
+                                .cookie(String.valueOf(cookie)))
                         .when()
-                        .log().all()
                         .post("/addproducttocart/details/31/1")
                         .then()
                         .statusCode(200)
                         .body("success", is(true))
                         .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"))
                         .body("updatetopcartsectionhtml", is("("+(parse+1)+")"))
+                        .log().all()
                         .extract().response();
     }
 }

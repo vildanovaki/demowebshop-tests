@@ -1,10 +1,11 @@
 package com.vildanova.tests;
 
+import com.vildanova.base.TestBaseForDemoWebShop;
 import com.vildanova.pages.*;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Test;
 
-public class DemoWebShopTests extends TestBase {
+public class DemoWebShopTests extends TestBaseForDemoWebShop {
 
     LoginAsnPasswordPage loginAsnPasswordPage = new LoginAsnPasswordPage();
     AuthorizationCookiePage authorizationCookiePage = new AuthorizationCookiePage();

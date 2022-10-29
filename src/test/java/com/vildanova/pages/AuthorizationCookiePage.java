@@ -1,32 +1,28 @@
 package com.vildanova.pages;
 
 import io.qameta.allure.Step;
-import io.qameta.allure.restassured.AllureRestAssured;
 import org.openqa.selenium.Cookie;
+
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.vildanova.filters.CustomLogFilter.customLogFilter;
-import static com.vildanova.pages.LoginAsnPasswordPage.login;
-import static com.vildanova.pages.LoginAsnPasswordPage.password;
+import static com.vildanova.tests.Specs.requestAuthorizationCookie;
+import static com.vildanova.tests.Specs.responseAuthorizationCookie;
 import static io.restassured.RestAssured.given;
 
 public class AuthorizationCookiePage {
 
-    static Cookie cookie;
+    public static Cookie cookie;
     String authorizationCookie;
 
     @Step("Прочитать куки клиента")
     public AuthorizationCookiePage getAuthorizationCookie(){
         authorizationCookie =
                 given()
-                        .filter(customLogFilter().withCustomTemplates())
-                        .contentType("application/x-www-form-urlencoded; charset=UTF-8")
-                        .body("Email="+login+"&Password="+password+"&RememberMe=false")
+                        .spec(requestAuthorizationCookie)
                         .when()
-                        .log().all()
                         .post("/login")
                         .then()
-                        .statusCode(302)
+                        .spec(responseAuthorizationCookie)
                         .extract()
                         .cookie("NOPCOMMERCE.AUTH");
         return this;

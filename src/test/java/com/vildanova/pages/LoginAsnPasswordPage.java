@@ -2,11 +2,12 @@ package com.vildanova.pages;
 
 import io.qameta.allure.Step;
 
-import static com.vildanova.tests.TestBase.credentials;
+import static com.vildanova.base.TestBaseForDemoWebShop.credentials;
 
 public class LoginAsnPasswordPage {
 
-    static String login, password;
+    public static String login;
+    public static String password;
 
     @Step("Прочитать логин и пароль через owner")
     public void getInformationAboutLoginAndPassword() {

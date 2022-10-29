@@ -1,4 +1,4 @@
-package com.vildanova.tests;
+package com.vildanova.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -7,12 +7,11 @@ import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static java.lang.String.format;
 
-public class TestBase {
+public class TestBaseForDemoWebShop {
 
     public static AppConfig credentials =
             ConfigFactory.create(AppConfig.class);
