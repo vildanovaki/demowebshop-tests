@@ -1,15 +1,15 @@
 package com.vildanova.tests;
 
 import com.vildanova.base.TestBaseRegres;
-import com.vildanova.lombok.request.UserRequestSuccessfulRegistration;
-import com.vildanova.lombok.request.UserRequestUnsuccessfulRegistration;
-import com.vildanova.lombok.request.UsersRequestUpdateInformation;
+import com.vildanova.lombok.request.SuccessRegRequest;
+import com.vildanova.lombok.request.UnsuccessRegRequest;
+import com.vildanova.lombok.request.UpdInfUsersRequest;
 import com.vildanova.lombok.response.LombokResourceData;
 import com.vildanova.lombok.response.SingleUserData;
 import com.vildanova.models.SingleUserDataModel;
 import org.junit.jupiter.api.Test;
 
-import static com.vildanova.tests.Specs.responseStatusCodeTwuHundred;
+import static com.vildanova.helpers.Specs.responseStatusCodeTwuHundred;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -19,15 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegresTests extends TestBaseRegres {
 
-    public static UserRequestSuccessfulRegistration userRequestSuccessfulRegistration = new UserRequestSuccessfulRegistration();
-    public static UserRequestUnsuccessfulRegistration userRequestUnsuccessfulRegistration = new UserRequestUnsuccessfulRegistration();
-    public static UsersRequestUpdateInformation usersRequestUpdateInformation = new UsersRequestUpdateInformation();
+    public static SuccessRegRequest successRegRequest = new SuccessRegRequest();
+    public static UnsuccessRegRequest unsuccessRegRequest = new UnsuccessRegRequest();
+    public static UpdInfUsersRequest updInfUsersRequest = new UpdInfUsersRequest();
 
     @Test
     void successfulRegistration() {
         given()
                 .contentType(JSON)
-                .body(userRequestSuccessfulRegistration)
+                .body(successRegRequest)
                 .when()
                 .post("/api/register")
                 .then()
@@ -39,7 +39,7 @@ public class RegresTests extends TestBaseRegres {
     void unsuccessfulRegistration() {
         given()
                 .contentType(JSON)
-                .body(userRequestUnsuccessfulRegistration)
+                .body(unsuccessRegRequest)
                 .when()
                 .post("/api/register")
                 .then()
@@ -51,7 +51,7 @@ public class RegresTests extends TestBaseRegres {
     void updateInformationAboutUser() {
         given()
                 .contentType(JSON)
-                .body(usersRequestUpdateInformation)
+                .body(updInfUsersRequest)
                 .when()
                 .put("/api/users/2")
                 .then()

@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UsersRequestUpdateInformation {
+public class SuccessRegRequest {
 
-    private String name = "morpheus";
-    private String job = "zion resident";
+    private String email = "eve.holt@reqres.in";
+    private String password = "pistol";
 }

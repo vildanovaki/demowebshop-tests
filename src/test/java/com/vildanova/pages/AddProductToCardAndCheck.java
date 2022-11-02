@@ -1,14 +1,11 @@
 package com.vildanova.pages;
 
 import io.qameta.allure.Step;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.response.Response;
 
-import static com.vildanova.filters.CustomLogFilter.customLogFilter;
 import static com.vildanova.pages.AuthorizationCookiePage.cookie;
 import static com.vildanova.pages.CountProductsPage.parse;
-import static com.vildanova.tests.Specs.requestAddProductToCardAndCheck;
-import static com.vildanova.tests.Specs.requestAuthorizationCookie;
+import static com.vildanova.helpers.Specs.requestAddProductToCardAndCheck;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 

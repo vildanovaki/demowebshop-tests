@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserRequestSuccessfulRegistration {
+public class UnsuccessRegRequest {
 
-    private String email = "eve.holt@reqres.in";
-    private String password = "pistol";
+    private String email = "sydney@fife";
 }

@@ -1,4 +1,4 @@
-package com.vildanova.tests;
+package com.vildanova.helpers;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;

@@ -5,8 +5,8 @@ import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.vildanova.tests.Specs.requestAuthorizationCookie;
-import static com.vildanova.tests.Specs.responseAuthorizationCookie;
+import static com.vildanova.helpers.Specs.requestAuthorizationCookie;
+import static com.vildanova.helpers.Specs.responseAuthorizationCookie;
 import static io.restassured.RestAssured.given;
 
 public class AuthorizationCookiePage {
